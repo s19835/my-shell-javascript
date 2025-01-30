@@ -1,0 +1,24 @@
+{
+  "name": "my-shell-javascript",
+  "version": "1.0.0",
+  "description": "simple shell that can execute basic commands like ls, cd, echo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/s19835/my-shell-javascript.git"
+  },
+  "keywords": [
+    "shell",
+    "commands",
+    "project"
+  ],
+  "author": "Maria Niranjan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/s19835/my-shell-javascript/issues"
+  },
+  "homepage": "https://github.com/s19835/my-shell-javascript#readme"
+}
