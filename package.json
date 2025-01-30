@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/s19835/my-shell-javascript/issues"
   },
-  "homepage": "https://github.com/s19835/my-shell-javascript#readme"
+  "homepage": "https://github.com/s19835/my-shell-javascript#readme",
+  "dependencies": {
+    "chalk": "^5.4.1"
+  }
 }
