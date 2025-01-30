@@ -6,10 +6,8 @@ const rl = createInterface({
     output: process.stdout,
 })
 
-function startShell() {
+export function startShell() {
     rl.question('$ ', (answer) => {
         rl.close();
     })
 }
-
-export default { startShell };

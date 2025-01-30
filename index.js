@@ -1,4 +1,4 @@
-import { startShell } from '.src/shell';
+import { startShell } from './src/shell.js';
 
 // start the shell
 startShell();
