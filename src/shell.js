@@ -1,7 +1,7 @@
-const readline = require('readline')
-const chalk = require('chalk')
+import { createInterface } from 'readline';
+import chalk from 'chalk';
 
-const rl = readline.createInterface({
+const rl = createInterface({
     input: process.stdin,
     output: process.stdout,
 })
@@ -12,4 +12,4 @@ function startShell() {
     })
 }
 
-module.exports = { startShell };
+export default { startShell };
