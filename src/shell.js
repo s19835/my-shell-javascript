@@ -1,5 +1,6 @@
 import { createInterface } from 'readline';
 import chalk from 'chalk';
+import { exit } from 'process';
 
 const rl = createInterface({
     input: process.stdin,
@@ -9,4 +10,16 @@ const rl = createInterface({
 
 export function startShell() {
     rl.prompt();
+
+    rl.on('line', async (input) => {
+        const [command, ...args] = input.trim().split(" ");
+
+        switch (command) {
+            case 'exit':
+                exit();
+        
+            default:
+                break;
+        }
+    })
 }
