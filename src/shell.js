@@ -1,6 +1,6 @@
 import { createInterface } from 'readline';
 import chalk from 'chalk';
-import { exit } from 'process';
+import { echo } from './commands/echo.js';
 
 const rl = createInterface({
     input: process.stdin,
@@ -13,13 +13,18 @@ export function startShell() {
 
     rl.on('line', async (input) => {
         const [command, ...args] = input.trim().split(" ");
-
+        
         switch (command) {
             case 'exit':
-                exit();
+                rl.close();
+                break;
+            
+            case 'echo':
+                echo(args.join(' '));
+                break;
         
             default:
                 break;
         }
-    })
+    });
 }
