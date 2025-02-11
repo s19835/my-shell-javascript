@@ -13,18 +13,21 @@ export function startShell() {
 
     rl.on('line', async (input) => {
         const [command, ...args] = input.trim().split(" ");
-        
-        switch (command) {
-            case 'exit':
-                rl.close();
-                break;
+
+        if (command === 'exit') {
+            rl.close();
+        } else {
+            switch (command) {
+                case 'echo':
+                    echo(args.join(' '));
+                    break;
             
-            case 'echo':
-                echo(args.join(' '));
-                break;
-        
-            default:
-                break;
+                default:
+                    console.log(chalk.red(`command not found: ${command}`));
+                    break;
+            }
+    
+            rl.prompt();
         }
     });
 }
