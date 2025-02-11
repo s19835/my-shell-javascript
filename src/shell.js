@@ -1,7 +1,5 @@
 import { createInterface } from 'readline';
 import chalk from 'chalk';
-import { echo } from './commands/echo.js';
-import { ls } from './commands/ls.js';
 import { executeCommand } from './utils/helpers.js';
 
 const rl = createInterface({
