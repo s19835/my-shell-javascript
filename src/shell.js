@@ -1,6 +1,7 @@
 import { createInterface } from 'readline';
 import chalk from 'chalk';
 import { echo } from './commands/echo.js';
+import { ls } from './commands/ls.js';
 
 const rl = createInterface({
     input: process.stdin,
@@ -19,15 +20,21 @@ export function startShell() {
         } else {
             switch (command) {
                 case 'echo':
-                    echo(args.join(' '));
+                    echo(args);
+                    rl.prompt();
+                    break;
+                
+                case 'ls':
+                    ls(() => {
+                        rl.prompt();
+                    });
                     break;
             
                 default:
                     console.log(chalk.red(`command not found: ${command}`));
+                    rl.prompt();
                     break;
             }
-    
-            rl.prompt();
         }
     });
 }
