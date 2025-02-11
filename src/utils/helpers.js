@@ -10,7 +10,9 @@ const commands = {};
 
 readdirSync(commandsPath).forEach((file) => {
     const commandName = path.basename(file, '.js');
-    commands[commandName] = require(path.join(commandsPath, file));
+    import(path.join(commandsPath, file)).then((module) => {
+        commands[commandName] = module.default;
+    });
 });
 
 export async function executeCommand(command, args) {

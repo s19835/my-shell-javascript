@@ -2,6 +2,7 @@ import { createInterface } from 'readline';
 import chalk from 'chalk';
 import { echo } from './commands/echo.js';
 import { ls } from './commands/ls.js';
+import { executeCommand } from './utils/helpers.js';
 
 const rl = createInterface({
     input: process.stdin,
@@ -17,24 +18,18 @@ export function startShell() {
 
         if (command === 'exit') {
             rl.close();
-        } else {
-            switch (command) {
-                case 'echo':
-                    echo(args);
-                    rl.prompt();
-                    break;
-                
-                case 'ls':
-                    ls(() => {
-                        rl.prompt();
-                    });
-                    break;
-            
-                default:
-                    console.log(chalk.red(`command not found: ${command}`));
-                    rl.prompt();
-                    break;
-            }
+        };
+
+        try {
+            await executeCommand(command, args);
+        } catch (error) {
+            console.log(chalk.red(error));
         }
+
+        rl.prompt();
+    });
+
+    rl.on('close', () => {
+        process.exit(0);
     });
 }
